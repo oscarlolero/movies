@@ -22,38 +22,43 @@ class HorizontalMovie extends StatelessWidget {
 
     return Container(
       height: _screenSize.height * 0.25,
-      child: PageView(
+      child: PageView.builder(
         pageSnapping: false,
         controller: _pageController,
-        children: _cards(context),
+        // children: _cards(context),
+        itemBuilder: (BuildContext context, int index) => _card(context, movies[index]),
+        itemCount: movies.length,
       ),
     );
   }
 
+  Widget _card(BuildContext context, Movie movie) {
+    return Container(
+      margin: EdgeInsets.only(right: 15.0),
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: FadeInImage(
+              placeholder: AssetImage('assets/img/no-image.jpg'),
+              image: NetworkImage(movie.getPosterImg()),
+              fit: BoxFit.cover,
+              height: 160.0,
+            ),
+          ),
+          SizedBox(height: 5),
+          Text(
+            movie.title,
+            style: Theme.of(context).textTheme.caption,
+            overflow: TextOverflow.ellipsis,
+          )
+        ],
+      ),
+    );
+  }
   List<Widget> _cards(BuildContext context) {
     return movies.map((movie) {
-      return Container(
-        margin: EdgeInsets.only(right: 15.0),
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: FadeInImage(
-                placeholder: AssetImage('assets/img/no-image.jpg'),
-                image: NetworkImage(movie.getPosterImg()),
-                fit: BoxFit.cover,
-                height: 160.0,
-              ),
-            ),
-            SizedBox(height: 5),
-            Text(
-              movie.title,
-              style: Theme.of(context).textTheme.caption,
-              overflow: TextOverflow.ellipsis,
-            )
-          ],
-        ),
-      );
+      return ;
     }).toList();
   }
 }
