@@ -7,8 +7,8 @@ class Movies {
     if (jsonList == null) return;
 
     for (var item in jsonList) {
-      final pelicula = new Movie.fromJsonMap(item);
-      items.add(pelicula);
+      final movie = new Movie.fromJsonMap(item);
+      items.add(movie);
     }
   }
 }
@@ -66,4 +66,5 @@ class Movie {
   getPosterImg() => posterPath == null
       ? 'https://static.thenounproject.com/png/1554489-200.png'
       : 'https://image.tmdb.org/t/p/w500/$posterPath';
+
 }
