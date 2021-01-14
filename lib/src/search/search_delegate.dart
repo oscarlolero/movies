@@ -8,9 +8,6 @@ import 'package:movies/src/providers/movies_provider.dart';
 class DataSearch extends SearchDelegate {
   final moviesProvider = new MoviesProvider();
 
-  final movies = ['Spiderman', 'Captain', 'Shrek', 'Ironman'];
-  final recentMovies = ['Spiderman', 'Captain America'];
-
   @override
   List<Widget> buildActions(BuildContext context) {
     // acciones de nuestro appbar
