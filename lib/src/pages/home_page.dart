@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 
 import 'package:movies/src/providers/movies_provider.dart';
 import 'package:movies/src/widgets/card_swiper_widget.dart';
-import 'package:movies/src/widgets/horizontal_movie.dart';
+import 'package:movies/src/widgets/horizontal_movie_widget.dart';
 
 class HomePage extends StatelessWidget {
   final moviesProvider = new MoviesProvider();

@@ -7,7 +7,8 @@ class HorizontalMovie extends StatelessWidget {
 
   HorizontalMovie({@required this.movies, @required this.nextPage});
 
-  final _pageController = new PageController(initialPage: 1, viewportFraction: 0.3);
+  final _pageController =
+      new PageController(initialPage: 1, viewportFraction: 0.3);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,8 @@ class HorizontalMovie extends StatelessWidget {
 
     //se ejecuta cada que se mueve el scroll
     _pageController.addListener(() {
-      if(_pageController.position.pixels >= _pageController.position.maxScrollExtent - 200) {
+      if (_pageController.position.pixels >=
+          _pageController.position.maxScrollExtent - 200) {
         nextPage();
       }
     });
@@ -26,14 +28,15 @@ class HorizontalMovie extends StatelessWidget {
         pageSnapping: false,
         controller: _pageController,
         // children: _cards(context),
-        itemBuilder: (BuildContext context, int index) => _card(context, movies[index]),
+        itemBuilder: (BuildContext context, int index) =>
+            _card(context, movies[index]),
         itemCount: movies.length,
       ),
     );
   }
 
   Widget _card(BuildContext context, Movie movie) {
-    return Container(
+    final movieCard = Container(
       margin: EdgeInsets.only(right: 15.0),
       child: Column(
         children: [
@@ -55,10 +58,12 @@ class HorizontalMovie extends StatelessWidget {
         ],
       ),
     );
-  }
-  List<Widget> _cards(BuildContext context) {
-    return movies.map((movie) {
-      return ;
-    }).toList();
+
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, 'detail', arguments: movie);
+      },
+      child: movieCard,
+    );
   }
 }
