@@ -67,4 +67,7 @@ class Movie {
       ? 'https://static.thenounproject.com/png/1554489-200.png'
       : 'https://image.tmdb.org/t/p/w500/$posterPath';
 
+  getBackgroundImg() => posterPath == null
+      ? 'https://static.thenounproject.com/png/1554489-200.png'
+      : 'https://image.tmdb.org/t/p/w500/$backdropPath';
 }
